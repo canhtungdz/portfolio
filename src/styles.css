@@ -192,7 +192,7 @@ button {
 }
 
 .nav__link:hover {
-  background: var(--grey-15);
+  color: #FFFFFF;
 }
 
 .nav__link--cta {
@@ -538,6 +538,101 @@ button {
   padding: 32px;
 }
 
+/* Interactive Neural Network Sim Mockup */
+.feature__mockup--neural {
+  width: 100%;
+  max-width: 520px;
+  background: rgba(18, 19, 26, 0.75);
+  border: 1px solid var(--grey-50);
+  border-radius: var(--radius-lg);
+  padding: 16px 24px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.nn-headers {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--grey-800);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0 8px;
+}
+
+.nn-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.nn-node {
+  cursor: pointer;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.25s var(--ease-out-quint);
+}
+
+.nn-node:hover {
+  transform: scale(1.1);
+}
+
+.nn-node circle {
+  fill: #0B0C10;
+  stroke: var(--grey-100);
+  stroke-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.nn-node text {
+  fill: var(--grey-800);
+  font-size: 11px;
+  font-weight: 700;
+  text-anchor: middle;
+  pointer-events: none;
+  transition: fill 0.3s ease;
+}
+
+.nn-node--input:hover circle {
+  stroke: var(--accent-blue);
+}
+
+.nn-node.is-active circle {
+  fill: url(#activeGrad);
+  stroke: #818cf8;
+  filter: url(#glow);
+}
+
+.nn-node.is-active text {
+  fill: #FFFFFF;
+}
+
+.nn-edge {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.06);
+  stroke-width: 1.5px;
+  transition: stroke 0.3s ease, stroke-width 0.3s ease;
+}
+
+.nn-edge.is-active {
+  stroke: var(--accent-blue);
+  stroke-width: 2px;
+}
+
+.nn-edge.is-pulse {
+  stroke-dasharray: 6 4;
+  animation: signal-pulse 0.8s linear infinite;
+}
+
+@keyframes signal-pulse {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
 .ui-preview {
   display: flex;
   flex-direction: column;
@@ -639,9 +734,7 @@ button {
   cursor: pointer;
 }
 
-.project-card:hover {
-  transform: translateY(-4px);
-}
+/* Card translateY hover animation removed */
 
 .project-card__image {
   position: relative;
@@ -659,9 +752,7 @@ button {
   transition: transform 0.6s var(--ease-out-quint);
 }
 
-.project-card:hover .project-card__visual {
-  transform: scale(1.03);
-}
+/* Card visual hover scale disabled */
 
 .project-card__visual--1 {
   background: var(--grey-15);
@@ -884,9 +975,7 @@ button {
   transition: transform 0.5s var(--ease-out-quint);
 }
 
-.blog-card:hover {
-  transform: translateY(-4px);
-}
+/* Blog card translateY hover animation removed */
 
 .blog-card__image {
   aspect-ratio: 1;
@@ -895,9 +984,7 @@ button {
   transition: transform 0.6s var(--ease-out-quint);
 }
 
-.blog-card:hover .blog-card__image {
-  transform: scale(1.02);
-}
+/* Blog card image hover scale disabled */
 
 .blog-card__image--1 {
   background: var(--grey-1200);
@@ -1139,18 +1226,17 @@ button {
   transition: transform 0.25s var(--ease-out-quint);
 }
 
-/* Demo (Dark glassmorphic) */
+/* Demo (High Contrast White) */
 .project-card__btn--demo {
-  background: rgba(18, 18, 18, 0.85);
-  color: var(--white);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: #FFFFFF;
+  color: #0B0C10;
+  border: 1px solid #FFFFFF;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
 }
 
 .project-card__btn--demo:hover {
-  background: var(--white);
-  color: var(--grey-1200);
-  border-color: var(--white);
+  background: var(--grey-1100);
+  border-color: var(--grey-1100);
   transform: translateY(-1px);
 }
 
@@ -1598,55 +1684,3 @@ button {
   pointer-events: none; /* Ignore mouse interactions so clicks pass through */
 }
 
-/* Custom cursor follower style */
-.custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 9999;
-  will-change: transform;
-  transform: translate(-50%, -50%) scale(0);
-  opacity: 0;
-  transition: opacity 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.custom-cursor .cursor-content {
-  background: #ffffff;
-  color: #0b0c10;
-  padding: 10px 20px;
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  white-space: nowrap;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
-  transform: rotate(-3deg);
-}
-
-.custom-cursor .symbol {
-  font-size: 20px;
-  font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 0, "opsz" 48;
-}
-
-.custom-cursor .cursor-text {
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: -0.2px;
-}
-
-/* Hide default cursor on interactive cards to let custom cursor shine */
-.interactive-card {
-  cursor: none !important;
-}
-
-/* On mobile viewports, disable custom cursor since touch doesn't support followers */
-@media (max-width: 1024px) {
-  .custom-cursor {
-    display: none !important;
-  }
-  .interactive-card {
-    cursor: pointer !important;
-  }
-}

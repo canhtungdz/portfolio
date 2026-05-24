@@ -14,8 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initVideoModal();
   initColabPets();
   
-  // 3. Initialize Interactive WebGL Background and Custom Cursor
-  new CustomCursor();
+  // 3. Initialize Interactive WebGL Background
   new ParticleGrid("particle-bg");
   
   // 4. Initialize Interactive Canvas Simulations
@@ -107,7 +106,99 @@ function renderFeatures(features) {
     const isReverse = index % 2 !== 0 ? 'feature--reverse' : '';
     let visualHtml = '';
 
-    if (feat.mockup === 'code') {
+    if (feat.mockup === 'neural') {
+      visualHtml = `
+        <div class="feature__mockup feature__mockup--neural">
+          <svg class="nn-svg" viewBox="0 0 400 240">
+            <defs>
+              <linearGradient id="activeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#3279f9" />
+                <stop offset="100%" stop-color="#818cf8" />
+              </linearGradient>
+              <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="4" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+            
+            <!-- Connection Weights (Edges) -->
+            <path class="nn-edge" id="edge-i0-h0" d="M 60,50 L 200,35" />
+            <path class="nn-edge" id="edge-i0-h1" d="M 60,50 L 200,90" />
+            <path class="nn-edge" id="edge-i0-h2" d="M 60,50 L 200,150" />
+            <path class="nn-edge" id="edge-i0-h3" d="M 60,50 L 200,205" />
+            
+            <path class="nn-edge" id="edge-i1-h0" d="M 60,120 L 200,35" />
+            <path class="nn-edge" id="edge-i1-h1" d="M 60,120 L 200,90" />
+            <path class="nn-edge" id="edge-i1-h2" d="M 60,120 L 200,150" />
+            <path class="nn-edge" id="edge-i1-h3" d="M 60,120 L 200,205" />
+            
+            <path class="nn-edge" id="edge-i2-h0" d="M 60,190 L 200,35" />
+            <path class="nn-edge" id="edge-i2-h1" d="M 60,190 L 200,90" />
+            <path class="nn-edge" id="edge-i2-h2" d="M 60,190 L 200,150" />
+            <path class="nn-edge" id="edge-i2-h3" d="M 60,190 L 200,205" />
+            
+            <path class="nn-edge" id="edge-h0-o0" d="M 200,35 L 340,80" />
+            <path class="nn-edge" id="edge-h0-o1" d="M 200,35 L 340,160" />
+            <path class="nn-edge" id="edge-h1-o0" d="M 200,90 L 340,80" />
+            <path class="nn-edge" id="edge-h1-o1" d="M 200,90 L 340,160" />
+            <path class="nn-edge" id="edge-h2-o0" d="M 200,150 L 340,80" />
+            <path class="nn-edge" id="edge-h2-o1" d="M 200,150 L 340,160" />
+            <path class="nn-edge" id="edge-h3-o0" d="M 200,205 L 340,80" />
+            <path class="nn-edge" id="edge-h3-o1" d="M 200,205 L 340,160" />
+            
+            <!-- Nodes -->
+            <g class="nn-node nn-node--input" id="node-i0" data-index="0">
+              <circle cx="60" cy="50" r="16" />
+              <text x="60" y="55">x₁</text>
+            </g>
+            <g class="nn-node nn-node--input" id="node-i1" data-index="1">
+              <circle cx="60" cy="120" r="16" />
+              <text x="60" y="125">x₂</text>
+            </g>
+            <g class="nn-node nn-node--input" id="node-i2" data-index="2">
+              <circle cx="60" cy="190" r="16" />
+              <text x="60" y="195">x₃</text>
+            </g>
+            
+            <g class="nn-node nn-node--hidden" id="node-h0">
+              <circle cx="200" cy="35" r="16" />
+              <text x="200" y="40">h₁</text>
+            </g>
+            <g class="nn-node nn-node--hidden" id="node-h1">
+              <circle cx="200" cy="90" r="16" />
+              <text x="200" y="95">h₂</text>
+            </g>
+            <g class="nn-node nn-node--hidden" id="node-h2">
+              <circle cx="200" cy="150" r="16" />
+              <text x="200" y="155">h₃</text>
+            </g>
+            <g class="nn-node nn-node--hidden" id="node-h3">
+              <circle cx="200" cy="205" r="16" />
+              <text x="200" y="210">h₄</text>
+            </g>
+            
+            <g class="nn-node nn-node--output" id="node-o0">
+              <circle cx="340" cy="80" r="16" />
+              <text x="340" y="85">y₁</text>
+            </g>
+            <g class="nn-node nn-node--output" id="node-o1">
+              <circle cx="340" cy="160" r="16" />
+              <text x="340" y="165">y₂</text>
+            </g>
+          </svg>
+        </div>
+      `;
+    } else if (feat.mockup === 'code') {
+      let highlighted = feat.code;
+      // Keywords
+      const keywords = ['import', 'class', 'def', 'return', 'as', 'self', 'super'];
+      keywords.forEach(kw => {
+        const regex = new RegExp(`\\b(${kw})\\b`, 'g');
+        highlighted = highlighted.replace(regex, '<span class="code-keyword">$1</span>');
+      });
+      // Functions
+      highlighted = highlighted.replace(/\b(\w+)(?=\()/g, '<span class="code-fn">$1</span>');
+
       visualHtml = `
         <div class="feature__mockup feature__mockup--code">
           <div class="mockup__bar">
@@ -116,9 +207,7 @@ function renderFeatures(features) {
             <span class="mockup__dot"></span>
           </div>
           <div class="mockup__body">
-            <code>
-              ${feat.code.replace(/\n/g, '<br>').replace(/ /g, '&nbsp;')}
-            </code>
+            <code style="white-space: pre; text-align: left; display: block; overflow-x: auto;">${highlighted}</code>
           </div>
         </div>
       `;
@@ -153,6 +242,7 @@ function renderFeatures(features) {
     `;
     container.insertAdjacentHTML('beforeend', html);
   });
+  initNeuralNetworkSim();
 }
 
 function renderProjects(projects) {
@@ -201,7 +291,7 @@ function renderProjects(projects) {
     }
 
     const html = `
-      <article class="project-card interactive-card" data-cursor="View Project" data-icon="explore" data-animate="fade-up" data-delay="${idx * 100}">
+      <article class="project-card" data-animate="fade-up" data-delay="${idx * 100}">
         <div class="project-card__image">
           <div class="project-card__visual project-card__visual--${type}">
             ${visualHtml}
@@ -235,16 +325,16 @@ function renderProjects(projects) {
 function renderSkills(skills) {
   if (!skills) return;
 
-  // Frontend list
+  // Machine Learning list
   const feList = document.querySelector('.skills__card:nth-child(1) .skills__list');
   if (feList) {
-    feList.innerHTML = skills.frontend.map(tag => `<span class="skill-tag">${tag}</span>`).join('');
+    feList.innerHTML = skills.machineLearning.map(tag => `<span class="skill-tag">${tag}</span>`).join('');
   }
 
-  // Backend list
+  // Computer Vision list
   const beList = document.querySelector('.skills__card:nth-child(2) .skills__list');
   if (beList) {
-    beList.innerHTML = skills.backend.map(tag => `<span class="skill-tag">${tag}</span>`).join('');
+    beList.innerHTML = skills.computerVision.map(tag => `<span class="skill-tag">${tag}</span>`).join('');
   }
 }
 
@@ -470,40 +560,33 @@ class ParticleGrid {
   }
 
   createParticles() {
-    const cols = 90;
-    const rows = 55;
-    const numParticles = cols * rows;
+    const numParticles = 4000;
 
     const positions = new Float32Array(numParticles * 3);
     const initialPositions = new Float32Array(numParticles * 3);
     const velocities = new Float32Array(numParticles * 3);
 
-    const spacingX = 0.75;
-    const spacingY = 0.75;
-    const startX = -((cols - 1) * spacingX) / 2;
-    const startY = -((rows - 1) * spacingY) / 2;
+    const radius = 13;
 
-    let index = 0;
-    for (let r = 0; r < rows; r++) {
-      for (let c = 0; c < cols; c++) {
-        const x = startX + c * spacingX;
-        const y = startY + r * spacingY;
-        const z = 0;
+    for (let i = 0; i < numParticles; i++) {
+      const phi = Math.acos(1 - 2 * (i + 0.5) / numParticles);
+      const theta = Math.PI * (1 + Math.sqrt(5)) * i;
 
-        positions[index * 3] = x;
-        positions[index * 3 + 1] = y;
-        positions[index * 3 + 2] = z;
+      const x = radius * Math.sin(phi) * Math.cos(theta);
+      const y = radius * Math.sin(phi) * Math.sin(theta);
+      const z = radius * Math.cos(phi);
 
-        initialPositions[index * 3] = x;
-        initialPositions[index * 3 + 1] = y;
-        initialPositions[index * 3 + 2] = z;
+      positions[i * 3] = x;
+      positions[i * 3 + 1] = y;
+      positions[i * 3 + 2] = z;
 
-        velocities[index * 3] = 0;
-        velocities[index * 3 + 1] = 0;
-        velocities[index * 3 + 2] = 0;
+      initialPositions[i * 3] = x;
+      initialPositions[i * 3 + 1] = y;
+      initialPositions[i * 3 + 2] = z;
 
-        index++;
-      }
+      velocities[i * 3] = 0;
+      velocities[i * 3 + 1] = 0;
+      velocities[i * 3 + 2] = 0;
     }
 
     this.geometry = new THREE.BufferGeometry();
@@ -556,6 +639,12 @@ class ParticleGrid {
   animate() {
     requestAnimationFrame(() => this.animate());
 
+    // Slow rotation of the particle system to enhance 3D perception
+    if (this.particleSystem) {
+      this.particleSystem.rotation.y += 0.0015;
+      this.particleSystem.rotation.x += 0.0005;
+    }
+
     // Dampen mouse coordinate changes for fluid elasticity
     this.mouse.x += (this.targetMouse.x - this.mouse.x) * 0.08;
     this.mouse.y += (this.targetMouse.y - this.mouse.y) * 0.08;
@@ -563,9 +652,10 @@ class ParticleGrid {
     this.raycaster.setFromCamera(this.mouse, this.camera);
     const intersects = this.raycaster.intersectObject(this.raycastPlane);
     
-    let touchPoint = null;
-    if (intersects.length > 0) {
-      touchPoint = intersects[0].point;
+    let localTouch = null;
+    if (intersects.length > 0 && this.particleSystem) {
+      localTouch = intersects[0].point.clone();
+      this.particleSystem.worldToLocal(localTouch);
     }
 
     const positions = this.geometry.attributes.position.array;
@@ -576,33 +666,60 @@ class ParticleGrid {
 
     // Damped elastic physics parameters
     const springFactor = 0.035; 
-    const damping = 0.94;       
-    const repelRadius = 7.0;    
+    const damping = 0.92;       
+    const repelRadius = 6.0;    
     const repelForce = 0.35;    
+
+    const time = Date.now();
+
+    // Breathing period: slowly expands and contracts
+    const breath = 1.0 + 0.15 * Math.sin(time * 0.0005);
 
     for (let i = 0; i < numParticles; i++) {
       const idx = i * 3;
 
-      let dx = positions[idx] - initialPos[idx];
-      let dy = positions[idx + 1] - initialPos[idx + 1];
-      let dz = positions[idx + 2] - initialPos[idx + 2];
+      // Base direction vector of the particle
+      const ix = initialPos[idx];
+      const iy = initialPos[idx + 1];
+      const iz = initialPos[idx + 2];
+
+      const length = Math.sqrt(ix*ix + iy*iy + iz*iz);
+      const nx = ix / length;
+      const ny = iy / length;
+      const nz = iz / length;
+
+      // Organic distortion: sinusoidal waves running across the sphere surface
+      const distortion = 1.0 + 0.12 * Math.sin(nx * 3 + time * 0.001) * Math.cos(ny * 3 + time * 0.0015) * Math.sin(nz * 2 + time * 0.0008);
+
+      // Target position under breathing & distortion
+      const targetRadius = length * breath * distortion;
+      const tx = nx * targetRadius;
+      const ty = ny * targetRadius;
+      const tz = nz * targetRadius;
+
+      // Spring force towards the breathing target
+      let dx = positions[idx] - tx;
+      let dy = positions[idx + 1] - ty;
+      let dz = positions[idx + 2] - tz;
 
       let ax = -dx * springFactor;
       let ay = -dy * springFactor;
       let az = -dz * springFactor;
 
-      if (touchPoint) {
-        const mx = positions[idx] - touchPoint.x;
-        const my = positions[idx + 1] - touchPoint.y;
-        const distSq = mx * mx + my * my;
+      if (localTouch) {
+        const mx = positions[idx] - localTouch.x;
+        const my = positions[idx + 1] - localTouch.y;
+        const mz = positions[idx + 2] - localTouch.z;
+        const distSq = mx * mx + my * my + mz * mz;
         const dist = Math.sqrt(distSq);
 
-        if (dist < repelRadius) {
+        if (dist < repelRadius && dist > 0.01) {
           const force = (repelRadius - dist) / repelRadius;
           const repellingPower = force * repelForce;
           
           ax += (mx / dist) * repellingPower;
           ay += (my / dist) * repellingPower;
+          az += (mz / dist) * repellingPower;
         }
       }
 
@@ -620,85 +737,6 @@ class ParticleGrid {
   }
 }
 
-/* ==========================================
-   CUSTOM FOLLOW CURSOR (GSAP ENGINE)
-   ========================================== */
-class CustomCursor {
-  constructor() {
-    this.cursor = document.getElementById("custom-cursor");
-    this.cursorText = document.getElementById("cursor-text");
-    this.cursorIcon = document.getElementById("cursor-icon");
-    
-    if (!this.cursor) return;
-
-    this.isHovering = false;
-    this.mouseX = 0;
-    this.mouseY = 0;
-
-    this.init();
-  }
-
-  init() {
-    gsap.set(this.cursor, { xPercent: -50, yPercent: -50, scale: 0, opacity: 0 });
-
-    this.quickX = gsap.quickTo(this.cursor, "x", { duration: 0.35, ease: "power3.out" });
-    this.quickY = gsap.quickTo(this.cursor, "y", { duration: 0.35, ease: "power3.out" });
-
-    window.addEventListener("mousemove", (e) => {
-      this.mouseX = e.clientX;
-      this.mouseY = e.clientY;
-      
-      this.quickX(this.mouseX);
-      this.quickY(this.mouseY);
-    });
-
-    document.addEventListener("mouseleave", () => {
-      this.hide();
-    });
-
-    this.setupHoverListeners();
-  }
-
-  setupHoverListeners() {
-    const interactiveElements = document.querySelectorAll(".interactive-card");
-
-    interactiveElements.forEach((el) => {
-      el.addEventListener("mouseenter", (e) => {
-        const text = el.getAttribute("data-cursor") || "Explore";
-        const icon = el.getAttribute("data-icon") || "arrow_forward";
-        
-        this.show(text, icon);
-      });
-
-      el.addEventListener("mouseleave", () => {
-        this.hide();
-      });
-    });
-  }
-
-  show(text, icon) {
-    this.isHovering = true;
-    this.cursorText.textContent = text;
-    this.cursorIcon.textContent = icon;
-
-    gsap.to(this.cursor, {
-      scale: 1,
-      opacity: 1,
-      duration: 0.4,
-      ease: "back.out(1.5)"
-    });
-  }
-
-  hide() {
-    this.isHovering = false;
-    gsap.to(this.cursor, {
-      scale: 0,
-      opacity: 0,
-      duration: 0.3,
-      ease: "power2.in"
-    });
-  }
-}
 
 /* ------------------------------------------
    CTA section floating stardust constellation
@@ -993,3 +1031,137 @@ function initColabPets() {
     activePets.forEach(pet => pet.resize(width));
   });
 }
+
+/* ==========================================
+   INTERACTIVE NEURAL NETWORK TOY SIMULATION
+   ========================================== */
+function initNeuralNetworkSim() {
+  const inputNodes = document.querySelectorAll('.nn-node--input');
+  if (inputNodes.length === 0) return;
+
+  const activeInputs = [false, false, false];
+
+  inputNodes.forEach((node) => {
+    node.addEventListener('click', () => {
+      const idx = parseInt(node.getAttribute('data-index'));
+      activeInputs[idx] = !activeInputs[idx];
+      
+      if (activeInputs[idx]) {
+        node.classList.add('is-active');
+      } else {
+        node.classList.remove('is-active');
+      }
+
+      propagateNeuralSignals(activeInputs);
+    });
+  });
+}
+
+function propagateNeuralSignals(activeInputs) {
+  const hiddenNodes = [
+    { id: 'node-h0', weights: [0.8, 0.2, 0.4] },
+    { id: 'node-h1', weights: [0.1, 0.9, 0.3] },
+    { id: 'node-h2', weights: [0.5, 0.5, 0.7] },
+    { id: 'node-h3', weights: [0.7, 0.1, 0.8] }
+  ];
+
+  const outputNodes = [
+    { id: 'node-o0', weights: [0.9, 0.2, 0.7, 0.3] },
+    { id: 'node-o1', weights: [0.1, 0.8, 0.3, 0.9] }
+  ];
+
+  // 1. Immediately update input-hidden paths (edges)
+  hiddenNodes.forEach((h, hIdx) => {
+    activeInputs.forEach((act, iIdx) => {
+      const edge = document.getElementById(`edge-i${iIdx}-h${hIdx}`);
+      if (edge) {
+        if (act) {
+          edge.classList.add('is-active', 'is-pulse');
+        } else {
+          edge.classList.remove('is-active', 'is-pulse');
+        }
+      }
+    });
+  });
+
+  // 2. Delay 250ms: Hidden layer nodes light up based on weighted activation!
+  setTimeout(() => {
+    hiddenNodes.forEach((h, hIdx) => {
+      const nodeEl = document.getElementById(h.id);
+      if (!nodeEl) return;
+
+      let activation = 0;
+      activeInputs.forEach((act, iIdx) => {
+        if (act) activation += h.weights[iIdx];
+      });
+
+      activation = Math.min(activation, 1.0);
+
+      const circle = nodeEl.querySelector('circle');
+      if (circle) {
+        if (activation > 0.05) {
+          nodeEl.classList.add('is-active');
+          circle.style.fillOpacity = 0.3 + activation * 0.7;
+          circle.style.strokeOpacity = 0.5 + activation * 0.5;
+        } else {
+          nodeEl.classList.remove('is-active');
+          circle.style.fillOpacity = '';
+          circle.style.strokeOpacity = '';
+        }
+      }
+    });
+
+    // 3. Simultaneously: Update hidden-output paths (edges)
+    outputNodes.forEach((o, oIdx) => {
+      hiddenNodes.forEach((h, hIdx) => {
+        const edge = document.getElementById(`edge-h${hIdx}-o${oIdx}`);
+        if (!edge) return;
+
+        let hActivation = 0;
+        activeInputs.forEach((act, iIdx) => {
+          if (act) hActivation += h.weights[iIdx];
+        });
+
+        if (hActivation > 0.05) {
+          edge.classList.add('is-active', 'is-pulse');
+        } else {
+          edge.classList.remove('is-active', 'is-pulse');
+        }
+      });
+    });
+
+    // 4. Delay 500ms: Output nodes light up!
+    setTimeout(() => {
+      outputNodes.forEach((o, oIdx) => {
+        const nodeEl = document.getElementById(o.id);
+        if (!nodeEl) return;
+
+        let activation = 0;
+        hiddenNodes.forEach((h, hIdx) => {
+          let hActivation = 0;
+          activeInputs.forEach((act, iIdx) => {
+            if (act) hActivation += h.weights[iIdx];
+          });
+          hActivation = Math.min(hActivation, 1.0);
+          activation += hActivation * o.weights[hIdx];
+        });
+
+        activation = Math.min(activation, 1.0);
+
+        const circle = nodeEl.querySelector('circle');
+        if (circle) {
+          if (activation > 0.05) {
+            nodeEl.classList.add('is-active');
+            circle.style.fillOpacity = 0.3 + activation * 0.7;
+            circle.style.strokeOpacity = 0.5 + activation * 0.5;
+          } else {
+            nodeEl.classList.remove('is-active');
+            circle.style.fillOpacity = '';
+            circle.style.strokeOpacity = '';
+          }
+        }
+      });
+    }, 250);
+  }, 250);
+}
+

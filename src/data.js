@@ -22,16 +22,15 @@ const portfolioData = {
      =============================================================== */
   features: [
     {
-      title: "Full-Stack\nDevelopment",
-      desc: "Building end-to-end applications from concept to deployment. Specializing in React, Next.js, Node.js, and modern cloud architectures that scale.",
-      mockup: "code",
-      code: "const createApp = async () => {\n  const server = await initServer();\n  const db = await connectDB();\n  return { server, db };\n};"
+      title: "Machine & Deep\nLearning",
+      desc: "Designing and training custom neural networks, fine-tuning large language models, and architecting optimized pipelines that transform raw data streams into intelligent, predictive systems.",
+      mockup: "neural"
     },
     {
-      title: "UI/UX\nDesign",
-      desc: "Creating beautiful, intuitive interfaces that users love. Every pixel is intentional. Every interaction is meaningful. Design with purpose.",
+      title: "Computer Vision\n& Perception",
+      desc: "Teaching machines to see and interpret. Specializing in real-time object detection (YOLO), semantic segmentation networks, and spatial coordinate transforms for robotics and smart analytics.",
       mockup: "ui",
-      // Glassmorphic UI preview cards list
+      // Glassmorphic object detection prediction probability meters
       uiCards: [
         { avatarClass: "", lines: ["long", "short"] },
         { avatarClass: "alt", lines: ["medium", "long"] },
@@ -91,25 +90,27 @@ const portfolioData = {
      Add or remove skills by editing the arrays below.
      =============================================================== */
   skills: {
-    frontend: [
-      "React",
-      "Next.js",
-      "Vue.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "React Native",
-      "Figma",
-      "Framer Motion"
-    ],
-    backend: [
-      "Node.js",
+    machineLearning: [
       "Python",
-      "PostgreSQL",
-      "MongoDB",
-      "Docker",
-      "AWS",
-      "CI/CD",
-      "GraphQL"
+      "PyTorch",
+      "TensorFlow",
+      "Scikit-Learn",
+      "Deep Learning",
+      "Keras",
+      "Pandas / NumPy",
+      "LLMs & NLP",
+      "MLOps & MLflow"
+    ],
+    computerVision: [
+      "OpenCV",
+      "YOLO",
+      "Image Segmentation",
+      "CNNs / ConvNets",
+      "PyTorch Lightning",
+      "Object Detection",
+      "CUDA / GPU acceleration",
+      "MediaPipe",
+      "Vision Transformers (ViTs)"
     ]
   }
 };
