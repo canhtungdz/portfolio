@@ -959,13 +959,13 @@ function initColabPets() {
   });
 
   const petData = [
-    { name: 'Oreo', path: 'src/assets/oreo.gif', type: 'kittens', defaultFace: 'right' },
-    { name: 'Red Velvet', path: 'src/assets/redvelvet.gif', type: 'kittens', defaultFace: 'left' },
-    { name: 'Chocolate Chip', path: 'src/assets/chocolatechip.gif', type: 'kittens', defaultFace: 'left' },
-    { name: 'Midnight', path: 'src/assets/MIDNIGHT.gif', type: 'corgis', defaultFace: 'left' },
-    { name: 'Stripes', path: 'src/assets/STRIPES.gif', type: 'corgis', defaultFace: 'left' },
-    { name: 'Crab', path: 'src/assets/crab.gif', type: 'crabs', defaultFace: 'left' },
-    { name: 'Firefox', path: 'src/assets/FIREFOX.gif', type: 'firefox', defaultFace: 'left' }
+    { name: 'Oreo', path: 'assets/oreo.gif', type: 'kittens', defaultFace: 'right' },
+    { name: 'Red Velvet', path: 'assets/redvelvet.gif', type: 'kittens', defaultFace: 'left' },
+    { name: 'Chocolate Chip', path: 'assets/chocolatechip.gif', type: 'kittens', defaultFace: 'left' },
+    { name: 'Midnight', path: 'assets/MIDNIGHT.gif', type: 'corgis', defaultFace: 'left' },
+    { name: 'Stripes', path: 'assets/STRIPES.gif', type: 'corgis', defaultFace: 'left' },
+    { name: 'Crab', path: 'assets/crab.gif', type: 'crabs', defaultFace: 'left' },
+    { name: 'Firefox', path: 'assets/FIREFOX.gif', type: 'firefox', defaultFace: 'left' }
   ];
   
   let activePets = [];
