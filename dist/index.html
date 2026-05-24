@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tung Nguyen — Developer & Creator</title>
+  <meta name="description" content="Personal portfolio of Tung Nguyen — Full-stack developer, creator, and tech enthusiast building the future.">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tung Nguyen — Developer & Creator">
+  <meta property="og:description" content="Full-stack developer, creator, and tech enthusiast building the future.">
+  
+  <!-- Fonts — Inter matches Google's premium aesthetic perfectly -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,450;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+  <!-- Material Symbols Icon Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" crossorigin href="/assets/index-ryDKhT1q.css">
+</head>
+<body>
+
+  <!-- WebGL 3D Particle Background -->
+  <div id="particle-bg"></div>
+
+  <!-- Custom Cursor Follower -->
+  <div class="custom-cursor" id="custom-cursor">
+    <div class="cursor-content">
+      <span class="symbol material-symbols-outlined" id="cursor-icon">arrow_forward</span>
+      <span class="cursor-text" id="cursor-text">Explore</span>
+    </div>
+  </div>
+
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <nav class="nav" id="mainNav">
+    <div class="nav__container">
+      <a href="#" class="nav__logo interactive-card" id="navLogo" data-cursor="Home" data-icon="home">
+        <span class="nav__logo-icon">✦</span>
+        Tung Nguyen
+      </a>
+      
+      <div class="nav__links" id="navLinks">
+        <a href="#about" class="nav__link interactive-card" data-section="about" data-cursor="About Me" data-icon="person">About</a>
+        <a href="#projects" class="nav__link interactive-card" data-section="projects" data-cursor="Projects" data-icon="work">Projects</a>
+        <a href="#skills" class="nav__link interactive-card" data-section="skills" data-cursor="Skills" data-icon="star">Skills</a>
+        <a href="#contact" class="nav__link nav__link--cta interactive-card" data-section="contact" data-cursor="Say Hello" data-icon="chat">Contact ↗</a>
+      </div>
+      
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!-- Colab Pets Container walking on bottom border -->
+    <div class="colab-pets-container" id="colabPetsContainer"></div>
+  </nav>
+
+  <!-- Mobile Dropdown Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu__content">
+      <a href="#about" class="mobile-menu__link">About</a>
+      <a href="#projects" class="mobile-menu__link">Projects</a>
+      <a href="#skills" class="mobile-menu__link">Skills</a>
+      <a href="#contact" class="mobile-menu__link">Contact</a>
+    </div>
+  </div>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="hero" id="hero">
+    <div class="hero__content">
+      <div class="hero__eyebrow" data-animate="fade-up">
+        <span class="hero__eyebrow-icon">✦</span>
+        Tung Nguyen
+      </div>
+      
+      <h1 class="hero__title" data-animate="fade-up" data-delay="100">
+        <!-- Loaded dynamically from data.js -->
+      </h1>
+      
+      <div class="hero__actions" data-animate="fade-up" data-delay="250">
+        <a href="#projects" class="btn btn--dark interactive-card" id="heroCtaPrimary" data-cursor="View Projects" data-icon="explore">
+          View my work
+        </a>
+        <a href="#contact" class="btn btn--light interactive-card" id="heroCtaSecondary" data-cursor="Get In Touch" data-icon="mail">
+          Get in touch
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== STATEMENT SECTION ==================== -->
+  <section class="statement" id="about">
+    <div class="container">
+      <p class="statement__text" data-animate="fade-up">
+        <!-- Loaded dynamically from data.js -->
+      </p>
+    </div>
+  </section>
+
+  <!-- ==================== FEATURES SECTION ==================== -->
+  <section class="features">
+    <div class="container">
+      <!-- Feature cards loaded dynamically from data.js -->
+    </div>
+  </section>
+
+  <!-- ==================== SELECTED WORK (PROJECTS GRID) ==================== -->
+  <section class="section projects" id="projects">
+    <div class="container">
+      <div class="section__header" data-animate="fade-up">
+        <h2 class="section__title">Selected work</h2>
+        <p class="section__subtitle">A collection of projects I've built with passion and precision.</p>
+      </div>
+
+      <div class="projects__grid">
+        <!-- Project cards loaded dynamically from data.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SKILLS SECTION ==================== -->
+  <section class="section skills" id="skills">
+    <div class="container">
+      <div class="skills__grid">
+        <!-- Card 1: Frontend & Design -->
+        <div class="skills__card" data-animate="fade-up">
+          <span class="skills__badge">Core Stack</span>
+          <h2 class="skills__card-title">Frontend<br><span class="text-light">& Design</span></h2>
+          <div class="skills__list">
+            <!-- Populated dynamically from data.js -->
+          </div>
+        </div>
+        
+        <!-- Card 2: Backend & Infrastructure -->
+        <div class="skills__card" data-animate="fade-up" data-delay="100">
+          <span class="skills__badge">Infrastructure</span>
+          <h2 class="skills__card-title">Backend<br><span class="text-light">& DevOps</span></h2>
+          <div class="skills__list">
+            <!-- Populated dynamically from data.js -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT CTA SECTION ==================== -->
+  <section class="cta" id="contact">
+    <!-- Star constellation particle canvas -->
+    <canvas class="cta__particles" id="ctaParticles"></canvas>
+    
+    <div class="cta__content">
+      <h2 class="cta__title" data-animate="fade-up">
+        Let's build something amazing together<span class="cta__cursor"></span>
+      </h2>
+      
+      <div class="cta__actions" data-animate="fade-up" data-delay="150">
+        <a href="#" class="btn btn--white interactive-card" id="ctaEmail" data-cursor="Send Email" data-icon="mail">
+          <!-- Populated dynamically from data.js -->
+        </a>
+        <a href="#" class="btn btn--glass interactive-card" id="ctaGithub" target="_blank" rel="noopener noreferrer" data-cursor="View GitHub" data-icon="code">
+          GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER SECTION ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__tagline">
+          <p><!-- Populated dynamically from data.js --></p>
+        </div>
+        <div class="footer__links-group">
+          <a href="#about" class="footer__link">About</a>
+          <a href="#projects" class="footer__link">Projects</a>
+          <a href="#skills" class="footer__link">Skills</a>
+        </div>
+        <div class="footer__links-group">
+          <a href="#contact" class="footer__link">Contact</a>
+          <a href="#" class="footer__link" id="footerGithub" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      
+      <div class="footer__giant">
+        <span><!-- Populated dynamically from data.js --></span>
+      </div>
+      
+      <div class="footer__bottom">
+        <span class="footer__copy"><!-- Populated dynamically from data.js --></span>
+        <div class="footer__bottom-links">
+          <a href="#" id="footerBtmGithub" target="_blank" rel="noopener">GitHub</a>
+          <a href="#" id="footerBtmLinkedin" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="#" id="footerBtmTwitter" target="_blank" rel="noopener">X / Twitter</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- YouTube Video Modal -->
+  <div class="video-modal" id="videoModal" aria-hidden="true" role="dialog">
+    <div class="video-modal__backdrop"></div>
+    <div class="video-modal__container">
+      <button class="video-modal__close" id="modalClose" aria-label="Close modal">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="video-modal__wrapper">
+        <iframe 
+          id="modalIframe"
+          src="" 
+          title="YouTube video player" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Colab Pets Floating Controller -->
+  <div class="colab-controller" id="colabController">
+    <button class="colab-controller__toggle" id="colabCtrlToggle" aria-label="Toggle Colab Pets Panel">
+      <span class="colab-controller__icon">🐾</span>
+      Colab Pets
+    </button>
+    <div class="colab-controller__menu" id="colabCtrlMenu">
+      <div class="colab-controller__header">
+        <h4>Colab Pets Modes</h4>
+      </div>
+      <div class="colab-controller__options">
+        <label class="colab-option">
+          <input type="checkbox" id="toggleKitties" checked>
+          <span class="colab-option__custom"></span>
+          🐱 Kittens (Oreo, Red Velvet...)
+        </label>
+        <label class="colab-option">
+          <input type="checkbox" id="toggleCorgis" checked>
+          <span class="colab-option__custom"></span>
+          🐶 Corgis (Midnight, Stripes)
+        </label>
+        <label class="colab-option">
+          <input type="checkbox" id="toggleCrabs" checked>
+          <span class="colab-option__custom"></span>
+          🦀 Crabs
+        </label>
+        <label class="colab-option">
+          <input type="checkbox" id="toggleFirefox" checked>
+          <span class="colab-option__custom"></span>
+          🦊 Firefox
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Three.js and GSAP CDN libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <script src="src/data.js"></script>
+  <script src="src/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+/* =================================================================
+   PORTFOLIO CONFIGURATION DATA
+   Edit this file to easily update all text, links, projects, and skills!
+   ================================================================= */
+
+const portfolioData = {
+  profile: {
+    name: "Tung Nguyen",
+    tagline: "Student in AI era",
+    statement: "A Computer Science student with a deep fascination for Artificial Intelligence, driven by the thrill of discovering and building intelligent systems.",
+    email: "canhtung2005@gmail.com",
+    github: "https://github.com/canhtungdz",
+    linkedin: "https://linkedin.com/in/canhtungdz",
+    // twitter: "https://twitter.com",
+    footerTagline: "Experience liftoff"
+  },
+
+  /* ===============================================================
+     ABOUT FEATURES SECTION
+     Edit your core highlights (like development or design services) here.
+     You can choose a mockup type: 'code' (displays code board) or 'ui' (displays UI visual).
+     =============================================================== */
+  features: [
+    {
+      title: "Full-Stack\nDevelopment",
+      desc: "Building end-to-end applications from concept to deployment. Specializing in React, Next.js, Node.js, and modern cloud architectures that scale.",
+      mockup: "code",
+      code: "const createApp = async () => {\n  const server = await initServer();\n  const db = await connectDB();\n  return { server, db };\n};"
+    },
+    {
+      title: "UI/UX\nDesign",
+      desc: "Creating beautiful, intuitive interfaces that users love. Every pixel is intentional. Every interaction is meaningful. Design with purpose.",
+      mockup: "ui",
+      // Glassmorphic UI preview cards list
+      uiCards: [
+        { avatarClass: "", lines: ["long", "short"] },
+        { avatarClass: "alt", lines: ["medium", "long"] },
+        { avatarClass: "accent", lines: ["short", "medium"] }
+      ]
+    }
+  ],
+
+  /* ===============================================================
+     SELECTED PROJECTS LIST
+     To edit a project, change the tag, title, and desc below.
+     To add a new project, copy one of the objects below and add it to the array.
+     
+     Choose a visualType (1 to 4) to pick one of 4 gorgeous background art styles:
+     - 1 : Zero-gravity floating circles (Dark background)
+     - 2 : Clean minimal Bento grids (Light background)
+     - 3 : Wave vector linear gradient (Gradient background)
+     - 4 : Matrix LED dots board (Dark background)
+     =============================================================== */
+  projects: [
+    {
+      tag: "AI / Machine Learning",
+      title: "AI-Powered Analytics",
+      desc: "Real-time data analytics dashboard with ML predictions and interactive visualizations.",
+      visualType: 1,
+      youtubeId: "Ke90Tje7VS0",
+      sourceUrl: "https://github.com/canhtungdz/ai-powered-analytics"
+    },
+    {
+      tag: "E-Commerce",
+      title: "Modern Shop Platform",
+      desc: "Full-featured e-commerce solution with real-time inventory and payment processing.",
+      visualType: 2,
+      youtubeId: "LhC518-M3G0",
+      sourceUrl: "https://github.com/canhtungdz/modern-shop-platform"
+    },
+    {
+      tag: "Mobile App",
+      title: "Health & Fitness Tracker",
+      desc: "Cross-platform mobile app for tracking workouts, nutrition, and health metrics.",
+      visualType: 3,
+      youtubeId: "Ke90Tje7VS0",
+      sourceUrl: "https://github.com/canhtungdz/health-fitness-tracker"
+    },
+    {
+      tag: "SaaS",
+      title: "Team Collaboration Suite",
+      desc: "Project management and real-time collaboration with video conferencing.",
+      visualType: 4,
+      youtubeId: "2b9txcAt4e0",
+      sourceUrl: "https://github.com/canhtungdz/team-collaboration-suite"
+    }
+  ],
+
+  /* ===============================================================
+     SKILLS TAGS LIST
+     Add or remove skills by editing the arrays below.
+     =============================================================== */
+  skills: {
+    frontend: [
+      "React",
+      "Next.js",
+      "Vue.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "React Native",
+      "Figma",
+      "Framer Motion"
+    ],
+    backend: [
+      "Node.js",
+      "Python",
+      "PostgreSQL",
+      "MongoDB",
+      "Docker",
+      "AWS",
+      "CI/CD",
+      "GraphQL"
+    ]
+  }
+};
+
+// Make it globally accessible
+window.portfolioData = portfolioData;
