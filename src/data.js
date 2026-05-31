@@ -53,35 +53,35 @@ const portfolioData = {
   projects: [
     {
       tag: "AI / Machine Learning",
-      title: "AI-Powered Analytics",
-      desc: "Real-time data analytics dashboard with ML predictions and interactive visualizations.",
+      title: "SpaceEval: Extraction of Spatial Information",
+      desc: "Applying LLM to extract spatial information from text.",
       visualType: 1,
       youtubeId: "Ke90Tje7VS0",
-      sourceUrl: "https://github.com/canhtungdz/ai-powered-analytics"
+      sourceUrl: "https://github.com/canhtungdz/spaceeval"
     },
     {
-      tag: "E-Commerce",
-      title: "Modern Shop Platform",
-      desc: "Full-featured e-commerce solution with real-time inventory and payment processing.",
+      tag: "Machine Learning",
+      title: "Phone Price Prediction",
+      desc: "Using machine learning model to predict phone prices.",
       visualType: 2,
       youtubeId: "LhC518-M3G0",
-      sourceUrl: "https://github.com/canhtungdz/modern-shop-platform"
+      sourceUrl: "https://github.com/canhtungdz/phone-price-predict"
     },
     {
-      tag: "Mobile App",
-      title: "Health & Fitness Tracker",
-      desc: "Cross-platform mobile app for tracking workouts, nutrition, and health metrics.",
+      tag: "Reinforcement Learning",
+      title: "Flappy Bird Autonomous AI Agent",
+      desc: "Reinforcement learning for game agents",
       visualType: 3,
-      youtubeId: "Ke90Tje7VS0",
-      sourceUrl: "https://github.com/canhtungdz/health-fitness-tracker"
+      youtubeId: "AIShkPAli2M",
+      sourceUrl: "https://github.com/canhtungdz/Flappy_RL"
     },
     {
-      tag: "SaaS",
-      title: "Team Collaboration Suite",
-      desc: "Project management and real-time collaboration with video conferencing.",
+      tag: "Game",
+      title: "Rush Hour Puzzle Game",
+      desc: "Develop a puzzle game, and solver for that.",
       visualType: 4,
       youtubeId: "2b9txcAt4e0",
-      sourceUrl: "https://github.com/canhtungdz/team-collaboration-suite"
+      sourceUrl: "https://github.com/canhtungdz/Rush_Hour"
     }
   ],
 
