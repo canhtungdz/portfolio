@@ -254,7 +254,11 @@ function renderProjects(projects) {
     let visualHtml = '';
     const type = proj.visualType;
 
-    if (type === 1) {
+    if (proj.image) {
+      visualHtml = `
+        <img src="${proj.image}" class="project-card__img" alt="${proj.title}" loading="lazy" />
+      `;
+    } else if (type === 1) {
       visualHtml = `
         <div class="visual-circles">
           <div class="visual-circle visual-circle--1"></div>
