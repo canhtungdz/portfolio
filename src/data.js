@@ -72,7 +72,7 @@ const portfolioData = {
       title: "Flappy Bird Autonomous AI Agent",
       desc: "Reinforcement learning for game agents",
       visualType: 3,
-      image: "assets/flappybird.png",
+      image: "assets/flappyrl.png",
       youtubeId: "AIShkPAli2M",
       sourceUrl: "https://github.com/canhtungdz/Flappy_RL"
     },
